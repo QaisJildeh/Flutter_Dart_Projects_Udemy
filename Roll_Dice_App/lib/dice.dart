@@ -14,11 +14,12 @@ class RollDice extends StatefulWidget {
 }
 
 class _RollDice extends State<RollDice> {
+  final Random randomizer = Random();
   String image = 'assets/images/img_${Random().nextInt(6) + 1}.png';
 
   void roll(){
     setState(() {
-      image = 'assets/images/img_${Random().nextInt(6) + 1}.png';
+      image = 'assets/images/img_${randomizer.nextInt(6) + 1}.png';
     });
   }
 
