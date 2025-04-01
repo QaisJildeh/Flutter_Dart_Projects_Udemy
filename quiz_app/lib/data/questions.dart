@@ -1,4 +1,4 @@
-import 'package:quiz_app/quiz_question.dart';
+import 'package:quiz_app/models/quiz_question.dart';
 
 final questions = <QuizQuestion>[
   QuizQuestion('assets/images/plane_1.jpg', [

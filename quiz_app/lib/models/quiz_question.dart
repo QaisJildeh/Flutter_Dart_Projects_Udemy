@@ -8,4 +8,10 @@ class QuizQuestion {
   String get imagePath => _imagePath;
   String get text => _text;
   List<String> get answers => _answers; 
+
+  List<String> getShuffledAnswers(){
+    List<String> shuffledAnswers = List.of(_answers);
+    shuffledAnswers.shuffle();
+    return shuffledAnswers;
+  }
 }

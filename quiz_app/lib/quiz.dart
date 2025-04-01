@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/questions_screen.dart';
+import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/results_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -29,13 +31,27 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  final List<String> chosenAnswers = [];
+  void addAnswers(String answer){
+    chosenAnswers.add(answer);
+
+    if(chosenAnswers.length == questions.length){
+      setState(() {
+        activeScreen = 'result-screen';
+      });
+    }
+  }
+
   @override
   Widget build(ctx) {
     // * This is the third way to initialize the screen
     Widget screenWidget = StartScreen(stateFunction: switchScreen);
 
     if (activeScreen == 'questions-screen') {
-      screenWidget = QuestionsScreen();
+      screenWidget = QuestionsScreen(addAnswers);
+    }
+    else if(activeScreen == 'result-screen'){
+      screenWidget = ResultsScreen(chosenAnswers: chosenAnswers,);
     }
 
     return MaterialApp(
