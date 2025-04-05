@@ -42,6 +42,13 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void restartQuiz(){
+    setState(() {
+      activeScreen = 'start-screen';
+      chosenAnswers.clear();
+    });
+  }
+
   @override
   Widget build(ctx) {
     // * This is the third way to initialize the screen
@@ -51,7 +58,7 @@ class _QuizState extends State<Quiz> {
       screenWidget = QuestionsScreen(addAnswers);
     }
     else if(activeScreen == 'result-screen'){
-      screenWidget = ResultsScreen(chosenAnswers: chosenAnswers,);
+      screenWidget = ResultsScreen(chosenAnswers: chosenAnswers, restartQuiz: restartQuiz,);
     }
 
     return MaterialApp(
